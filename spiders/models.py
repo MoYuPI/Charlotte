@@ -3,10 +3,6 @@ from django.db import models
 # Create your models here.
 from django.db import models
 
-class Demo_data(models.Model):
-    iAutoId = models.AutoField(primary_key=True, default=None)
-    title = models.CharField(max_length=256, default=None)
-
 class NewHouse(models.Model):
     name = models.CharField("项目名称", max_length=255)
     supervision_bank = models.CharField("资金监管银行", max_length=255)
@@ -35,7 +31,8 @@ class NewHouse(models.Model):
     districts = models.CharField("所在区县", max_length=255)
     contact_phone = models.CharField("售楼电话", max_length=255)
     remark = models.CharField("备注", max_length=255)
-
+    created = models.DateTimeField(auto_now_add=True)
     class Meta:
         managed = True
+        ordering = ('created',)
         db_table = 'new_house'
