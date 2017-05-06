@@ -82,7 +82,7 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # 使用mysql进行数据存储
-        'NAME': 'demo',
+        'NAME': 'charlotte',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
