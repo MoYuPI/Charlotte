@@ -7,7 +7,7 @@
 
 import scrapy
 from scrapy_djangoitem import DjangoItem
-from newhouse.models import NewHouse
+from spiders.models import NewHouse
 
 class NewHouseDjangoItem(DjangoItem):
     # define the fields for your item here like:
