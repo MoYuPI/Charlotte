@@ -5,7 +5,10 @@
 安装mysql,默认用户名密码:root/root，对应配置修改Charlotte下的setting.py的DATABASES。
 ### 1.2 安装库
 安装python3.5,然后进入工程根目录，执行: 
-    pip3 install requirements.txt
+    pip install -r requirements.txt
+
+windows依赖VS编译工具，单独[安装](http://landinghub.visualstudio.com/visual-cpp-build-tools)
+
 ### 1.3 数据表
 工程根目录下执行： 
 
