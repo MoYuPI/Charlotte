@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for newhouse project
+# Scrapy settings for ScrapyRedisTest project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'newhouse'
+BOT_NAME = 'ScrapyRedisTest'
 
-SPIDER_MODULES = ['newhouse.spiders']
-NEWSPIDER_MODULE = 'newhouse.spiders'
+SPIDER_MODULES = ['ScrapyRedisTest.spiders']
+NEWSPIDER_MODULE = 'ScrapyRedisTest.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'newhouse (+http://www.yourdomain.com)'
+#USER_AGENT = 'ScrapyRedisTest (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -27,13 +27,13 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 3
+#DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED = False
+#COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -47,15 +47,19 @@ COOKIES_ENABLED = False
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'newhouse.middlewares.CralwerSpiderMiddleware': 543,
+#    'ScrapyRedisTest.middlewares.ScrapyredistestSpiderMiddleware': 543,
 #}
 
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+ITEM_PIPELINES = {
+    'scrapy_redis.pipelines.RedisPipeline': 300
+}
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-DOWNLOADER_MIDDLEWARES = {
-   # 'newhouse.middlewares.MyCustomDownloaderMiddleware': 543,
-   'newhouse.middlewares.rotate_user_agent.RandomUserAgentMiddleware': 400,
-}
+#DOWNLOADER_MIDDLEWARES = {
+#    'ScrapyRedisTest.middlewares.MyCustomDownloaderMiddleware': 543,
+#}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -65,17 +69,17 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'newhouse.pipelines.CralwerPipeline': 300,
-}
+#ITEM_PIPELINES = {
+#    'ScrapyRedisTest.pipelines.ScrapyredistestPipeline': 300,
+#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
-AUTOTHROTTLE_ENABLED = True
+#AUTOTHROTTLE_ENABLED = True
 # The initial download delay
-AUTOTHROTTLE_START_DELAY = 5
+#AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
-AUTOTHROTTLE_MAX_DELAY = 60
+#AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
 #AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0

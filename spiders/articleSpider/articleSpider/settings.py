@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for newhouse project
+# Scrapy settings for articleSpider project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -8,15 +8,16 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
+import os
 
-BOT_NAME = 'newhouse'
+BOT_NAME = 'articleSpider'
 
-SPIDER_MODULES = ['newhouse.spiders']
-NEWSPIDER_MODULE = 'newhouse.spiders'
+SPIDER_MODULES = ['articleSpider.spiders']
+NEWSPIDER_MODULE = 'articleSpider.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'newhouse (+http://www.yourdomain.com)'
+#USER_AGENT = 'articleSpider (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -47,14 +48,14 @@ COOKIES_ENABLED = False
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'newhouse.middlewares.CralwerSpiderMiddleware': 543,
+#    'articleSpider.middlewares.ArticlespiderSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   # 'newhouse.middlewares.MyCustomDownloaderMiddleware': 543,
-   'newhouse.middlewares.rotate_user_agent.RandomUserAgentMiddleware': 400,
+   # 'articleSpider.middlewares.MyCustomDownloaderMiddleware': 543,
+    'articleSpider.middlewares.RandomUserAgentMiddlware': 543,
 }
 
 # Enable or disable extensions
@@ -66,16 +67,32 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'newhouse.pipelines.CralwerPipeline': 300,
+   # 'articleSpider.pipelines.ArticlespiderPipeline': 300,
+   #  'articleSpider.pipelines.JsonExporterPipleline': 2,
+    # 'articleSpider.pipelines.MysqlTwistedPipline': 5,
+    'articleSpider.pipelines.ElasticsearchPipeline': 1
 }
+
+IMAGES_URLS_FIELD = "front_image_url"
+project_dir = os.path.abspath(os.path.dirname(__file__))
+IMAGES_STORE = os.path.join(project_dir, 'images')
+
+import sys
+BASE_DIR = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
+sys.path.insert(0, os.path.join(BASE_DIR, 'articleSpider'))
+
+
+USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0"
+RANDOM_UA_TYPE = "random"
+
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
-AUTOTHROTTLE_ENABLED = True
+#AUTOTHROTTLE_ENABLED = True
 # The initial download delay
-AUTOTHROTTLE_START_DELAY = 5
+#AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
-AUTOTHROTTLE_MAX_DELAY = 60
+#AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
 #AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
@@ -89,3 +106,12 @@ AUTOTHROTTLE_MAX_DELAY = 60
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+MYSQL_HOST = "127.0.0.1"
+MYSQL_DBNAME = "article_spider"
+MYSQL_USER = "root"
+MYSQL_PASSWORD = "root"
+
+
+SQL_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+SQL_DATE_FORMAT = "%Y-%m-%d"

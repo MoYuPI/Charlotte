@@ -4,3 +4,7 @@ PyMySQL==0.7.11
 scrapy==1.4.0
 scrapy-djangoitem==1.1.1
 pypiwin32
+mysqlclient==1.3.10
+fake-useragent
+selenium
+elasticsearch-dsl

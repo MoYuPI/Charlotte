@@ -11,6 +11,12 @@ class NbnewhouseSpider(scrapy.Spider):
     start_urls = ['http://cnnbfdc.com/']
     baseurl = 'http://newhouse.cnnbfdc.com'
 
+    headers = {
+        "HOST": "cnnbfdc.com/",
+        "Referer": "http://cnnbfdc.com/",
+        'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0"
+    }
+
     def start_requests(self):
         urls = []
         page = 90
