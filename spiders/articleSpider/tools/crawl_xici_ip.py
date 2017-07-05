@@ -4,7 +4,7 @@ import requests
 from scrapy.selector import Selector
 import MySQLdb
 
-conn = MySQLdb.connect(host="127.0.0.1", user="root", passwd="root", db="article_spider", charset="utf8")
+conn = MySQLdb.connect(host="127.0.0.1", user="root", passwd="123456", db="article_spider", charset="utf8")
 cursor = conn.cursor()
 
 

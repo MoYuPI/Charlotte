@@ -36,3 +36,14 @@ class NewHouse(models.Model):
         managed = True
         ordering = ('created',)
         db_table = 'new_house'
+
+class ProxyIp(models.Model):
+    ip = models.CharField("ip地址", max_length=50)
+    port = models.CharField("端口号", max_length=10)
+    speed = models.IntegerField("网速")
+    proxy_type = models.CharField("代理类型", max_length=10, default='HTTP')
+    created = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        managed = True
+        ordering = ('created',)
+        db_table = 'proxy_ip'

@@ -14,20 +14,27 @@ windows依赖VS编译工具，单独[安装](http://landinghub.visualstudio.com/
 
         python manage.py makemigrations
         python manage.py migrate
- 
-## 2.爬取http://newhouse.cnnbfdc.com下的心楼盘信息
+
+
+## 2.爬取IP代理数据
+cd 到 spiders/ProxyIp目录，命令行下执行：
+
+        scrapy crawl xici
+
+
+## 3.爬取http://newhouse.cnnbfdc.com下的心楼盘信息
 cd 到 spiders/newhouse目录，命令行下执行：
         
         scrapy crawl nbnewhouse
         
-## 3. 运行api服务
+## 4. 运行api服务
 根目录下执行：
     
     python manage.py runserver
     
 api接口如下：
 
-1. 获取新楼盘列表：/newhouses/?page=2&page_size=5
+1. 获取新楼盘列表：api/newhouses/?page=2&page_size=5
 
     ```
     {
@@ -54,7 +61,7 @@ api接口如下：
 }
     ```
     
-2. 获取楼盘详情：/newhouses/256/
+2. 获取楼盘详情：api/newhouses/256/
 
     ```
    {
@@ -89,3 +96,9 @@ api接口如下：
     "created": "2017-05-06T02:46:55.063256Z"
 }
     ```
+
+## 5. 搜索引擎
+
+1. 启动ElasticSearch
+2. 启动redis
+3.  http://127.0.0.1:8000/search/

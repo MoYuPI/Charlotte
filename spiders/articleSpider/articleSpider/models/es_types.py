@@ -14,7 +14,6 @@ class CustomAnalyzer(_CustomAnalyzer):
     def get_analysis_definition(self):
         return {}
 
-
 ik_analyzer = CustomAnalyzer("ik_max_word", filter=["lowercase"])
 
 class ArticleType(DocType):

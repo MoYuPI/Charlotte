@@ -1,8 +1,6 @@
 import logging
 from fake_useragent import UserAgent
-
 logger = logging.getLogger(__name__)
-
 
 class RandomUserAgentMiddleware(object):
     def __init__(self, crawler):
