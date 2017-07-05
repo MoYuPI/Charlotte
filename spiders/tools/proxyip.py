@@ -1,6 +1,15 @@
 import requests
 import random
-from spiders.models import ProxyIp
+try:
+    from spiders.models import ProxyIp
+except Exception as e:
+    import sys
+    import os
+    import django
+    sys.path.append('../../Charlotte')
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'Charlotte.settings'
+    django.setup()
+    from spiders.models import ProxyIp
 
 class GetIP(object):
 
@@ -63,6 +72,13 @@ class GetIP(object):
             else:
                 return self.get_random_ip()
 
+    def clean(self):
+        #判断ip是否可用
+        for ip_info in ProxyIp.objects.all():
+            if not self.validate(ip_info.ip, ip_info.port):
+                ip_info.delete()
+
+
 if __name__ == "__main__":
     getip = GetIP()
-    print(get_ip.get_random_ip())
+    print(getip.clean())
