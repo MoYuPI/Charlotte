@@ -28,8 +28,10 @@ SECRET_KEY = '%-=)o@+e79un0o*v)52xps7c&pobu-5s_xi(pa1z_y07h&^jsh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    '123.206.200.215'
+]
 
 # Application definition
 
@@ -138,6 +140,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # REST_FRAMEWORK
 REST_FRAMEWORK = {

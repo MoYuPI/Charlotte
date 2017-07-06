@@ -11,3 +11,7 @@ elasticsearch-dsl
 requests
 Pillow
 redis
+django-crispy-forms
+django-formtools
+httplib2
+future
