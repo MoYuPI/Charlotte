@@ -47,3 +47,16 @@ class ProxyIp(models.Model):
         managed = True
         ordering = ('created',)
         db_table = 'proxy_ip'
+
+
+class AdministrativeCoding(models.Model):
+    coding = models.CharField("行政编码", max_length=15)
+    name = models.CharField("行政名称", max_length=50)
+    pid = models.CharField("上级行政编码", max_length=15)
+    level = models.IntegerField("行政等级")
+    classification_code = models.CharField("城乡分类代码", max_length=5, default="")
+    created = models.DateTimeField("创建时间",auto_now_add=True)
+    class Meta:
+        managed = True
+        ordering = ('coding',)
+        db_table = 'administrative_coding'

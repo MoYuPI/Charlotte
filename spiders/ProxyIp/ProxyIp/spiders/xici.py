@@ -15,7 +15,7 @@ class XiciSpider(scrapy.Spider):
 
     def start_requests(self):
         urls = []
-        page = 1000
+        page = 50
         for i in range(1,page):
             urls.append("http://www.xicidaili.com/nn/{0}".format(i))
         for url in urls:
