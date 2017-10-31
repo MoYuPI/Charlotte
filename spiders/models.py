@@ -29,6 +29,8 @@ class NewHouse(models.Model):
     sold_avg_price = models.DecimalField("已售(住宅)平均价", max_digits=10, decimal_places=2, blank=True)
     districts = models.CharField("所在区县", max_length=255, blank=True)
     contact_phone = models.CharField("售楼电话", max_length=255, blank=True)
+    high_price = models.DecimalField("最高单价(住宅)", max_digits=10, decimal_places=2, blank=True, default=0)
+    low_price = models.DecimalField("最低单价(住宅)", max_digits=10, decimal_places=2, blank=True, default=0)
     remark = models.CharField("备注", max_length=255, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     class Meta:

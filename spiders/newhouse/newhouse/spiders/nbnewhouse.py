@@ -38,14 +38,6 @@ class NbnewhouseSpider(scrapy.Spider):
             request = Request(url=href,callback=self.parse_detail)
             yield request
 
-    saleable_parking_amount = scrapy.Field()
-    saleable_garage_amount = scrapy.Field()
-    sold_avg_price = scrapy.Field()
-    districts = scrapy.Field()
-    contact_phone = scrapy.Field()
-    remark = scrapy.Field()
-
-
     def parse_detail(self, response):
         pattern = re.compile(r'\d+(?:\.\d+)?')
         newHouseItem = NewHouseDjangoItem()
@@ -73,10 +65,13 @@ class NbnewhouseSpider(scrapy.Spider):
         newHouseItem['reserve_flats'] = Decimal(pattern.findall(items[41].xpath('text()').extract()[-1])[0])
         newHouseItem['saleable_parking_amount'] = Decimal(pattern.findall(items[43].xpath('text()').extract()[-1])[0])
         newHouseItem['saleable_garage_amount'] = Decimal(pattern.findall(items[45].xpath('text()').extract()[-1])[0])
-        newHouseItem['sold_avg_price'] = Decimal(pattern.findall(items[47].xpath('text()').extract()[-1].strip())[0])
-        newHouseItem['districts'] = items[49].xpath('text()').extract()[-1].strip()
-        newHouseItem['contact_phone'] = items[51].xpath('text()').extract()[-1].strip()
-        newHouseItem['remark'] = items[53].xpath('text()').extract()[-1].strip()
+        # newHouseItem['sold_avg_price'] = Decimal(pattern.findall(items[47].xpath('text()').extract()[-1].strip())[0])
+        newHouseItem['sold_avg_price'] = 0
+        newHouseItem['districts'] = items[47].xpath('text()').extract()[-1].strip()
+        newHouseItem['contact_phone'] = items[49].xpath('text()').extract()[-1].strip()
+        newHouseItem['high_price'] = Decimal(pattern.findall(items[51].xpath('text()').extract()[-1].strip())[0])
+        newHouseItem['low_price'] = Decimal(pattern.findall(items[53].xpath('text()').extract()[-1].strip())[0])
+        newHouseItem['remark'] = items[55].xpath('text()').extract()[-1].strip()
         return newHouseItem
         # print(items[15].xpath('text()').extract()[-1].strip())
         # print(items[17].xpath('text()').extract()[-1].strip())

@@ -71,8 +71,8 @@ COOKIES_ENABLED = False
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     # 'newhouse.middlewares.MyCustomDownloaderMiddleware': 543,
-    'newhouse.middlewares.rotate_user_agent.RandomUserAgentMiddleware': 400,
-    'newhouse.middlewares.proxy.RandomProxyMiddleware': 400,
+    # 'newhouse.middlewares.rotate_user_agent.RandomUserAgentMiddleware': 400,
+    # 'newhouse.middlewares.proxy.RandomProxyMiddleware': 400,
 }
 
 # Enable or disable extensions

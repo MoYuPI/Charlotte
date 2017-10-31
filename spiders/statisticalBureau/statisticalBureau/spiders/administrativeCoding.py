@@ -13,8 +13,8 @@ class AdministrativecodingSpider(scrapy.Spider):
         result_item = []
         url = AdministrativecodingSpider.baseurl+'/index.html'
         yield scrapy.Request(url=url, callback=self.parse)
-        # url = "http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/11.html"
-        # yield scrapy.Request(url=url, callback=self.parse_city)
+        # url = "http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/33/3302.html"
+        # yield scrapy.Request(url=url, callback=self.parse_county)
 
     def parse(self, response):
         coding = response.xpath('//tr[contains(@class, "provincetr")]')
@@ -38,9 +38,7 @@ class AdministrativecodingSpider(scrapy.Spider):
         province_name = response.meta['name']
         province_url = response.meta['url']
         province_id = response.meta['id']
-        # province_name = '北京市'
-        # province_url = 'http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/11.html'
-        # province_id = '110100000000'
+
         cities = response.xpath('//tr[contains(@class, "citytr")]')
         for city in cities:
             cityItem = AdministrativeCodingItem()
@@ -64,6 +62,8 @@ class AdministrativecodingSpider(scrapy.Spider):
     def parse_county(self, response):
         city_id = response.meta['id']
         city_url = response.meta['url']
+        # city_url = 'http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/33/3302.html'
+        # city_id = '330200000000'
         counties = response.xpath('//tr[contains(@class, "countytr")]')
         for county in counties:
             countyItem = AdministrativeCodingItem()
