@@ -73,29 +73,3 @@ class NbnewhouseSpider(scrapy.Spider):
         newHouseItem['low_price'] = Decimal(pattern.findall(items[53].xpath('text()').extract()[-1].strip())[0])
         newHouseItem['remark'] = items[55].xpath('text()').extract()[-1].strip()
         return newHouseItem
-        # print(items[15].xpath('text()').extract()[-1].strip())
-        # print(items[17].xpath('text()').extract()[-1].strip())
-        # print(pattern.findall(items[19].xpath('text()').extract()[-1].strip())[0])
-        # print(pattern.findall(items[21].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[23].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[25].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[27].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[29].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[31].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[33].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[35].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[37].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[39].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[41].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[43].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[45].xpath('text()').extract()[-1])[0])
-        # print(pattern.findall(items[47].xpath('text()').extract()[-1])[0])
-        # print(items[49].xpath('text()').extract()[-1].strip())
-        # print(items[51].xpath('text()').extract()[-1].strip())
-        # print(items[53].xpath('text()').extract()[-1].strip())
-        # for index, item in enumerate(response.xpath('//table')[15].xpath('tr/td')):
-        #     # 0
-        #     info = []
-        #     info.append(item.xpath('text()').extract()[1].strip()) if index % 2 == 0 else info.append(
-        #         item.xpath('text()').extract()[0].strip())
-        #     print(info)
