@@ -7,7 +7,7 @@
 from spiders.models import NewHouse
 class CralwerPipeline(object):
     def process_item(self, item, spider):
-
+        print(item)
         try:
             new_house = NewHouse.objects.get(name=item['name'])
             new_house.update(item.values())

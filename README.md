@@ -25,7 +25,7 @@ cd 到 spiders/tools目录，清晰有效ip数据：
 
         python proxyip.py
 
-## 3.爬取http://newhouse.cnnbfdc.com下的心楼盘信息
+## 3.爬取[宁波楼盘信息]()http://newhouse.cnnbfdc.com)下的心楼盘信息
 cd 到 spiders/newhouse目录，命令行下执行：
         
         scrapy crawl nbnewhouse

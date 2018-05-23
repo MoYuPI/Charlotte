@@ -3,7 +3,7 @@ __author__ = 'bobby'
 
 from datetime import datetime
 from elasticsearch_dsl import DocType, Date, Nested, Boolean, \
-    analyzer, InnerObjectWrapper, Completion, Keyword, Text, Integer
+    analyzer, Completion, Keyword, Text, Integer
 
 from elasticsearch_dsl.analysis import CustomAnalyzer as _CustomAnalyzer
 

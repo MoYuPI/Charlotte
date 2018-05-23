@@ -89,5 +89,4 @@ ENV/
 .ropeproject
 
 
-migrations/
 .idea/

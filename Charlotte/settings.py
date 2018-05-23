@@ -12,11 +12,10 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import sys
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'backend'))
-sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
+# sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -45,7 +44,7 @@ INSTALLED_APPS = [
     'spiders',
     'rest_framework',
     'LcvSearch',
-    'xadmin'
+    # 'xadmin'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -92,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  # 使用mysql进行数据存储
         'NAME': 'charlotte',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': 'root',
         'HOST': '127.0.0.1',
         'PORT': '3306'
     }

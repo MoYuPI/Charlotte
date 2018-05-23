@@ -3,7 +3,6 @@ djangorestframework
 PyMySQL
 scrapy
 scrapy-djangoitem
-mysqlclient
 fake-useragent
 selenium
 elasticsearch-dsl
