@@ -4,7 +4,7 @@
 ### 1.1 安装数据库
 安装mysql,默认用户名密码:root/root，对应配置修改Charlotte下的setting.py的DATABASES。
 ### 1.2 安装库
-安装python3.5,然后进入工程根目录，执行: 
+安装python3+,然后进入工程根目录，执行: 
     pip install -r requirements.txt
 
 windows依赖VS编译工具，单独[安装](http://landinghub.visualstudio.com/visual-cpp-build-tools)
@@ -25,7 +25,7 @@ cd 到 spiders/tools目录，清晰有效ip数据：
 
         python proxyip.py
 
-## 3.爬取[宁波楼盘信息]()http://newhouse.cnnbfdc.com)下的心楼盘信息
+## 3.爬取[宁波楼盘信息](http://newhouse.cnnbfdc.com)下的心楼盘信息
 cd 到 spiders/newhouse目录，命令行下执行：
         
         scrapy crawl nbnewhouse

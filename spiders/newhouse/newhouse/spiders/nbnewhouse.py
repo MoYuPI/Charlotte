@@ -35,15 +35,15 @@ class NbnewhouseSpider(scrapy.Spider):
             # tutorialItem = TutorialItem()
             # tutorialItem['name'] = item.xpath("div/a/text()").extract()[0].strip()
             # tutorialItem['href'] = item.xpath('div/a/@href').extract()[0].strip()
-            href = '{}/{}'.format(NbnewhouseSpider.base_url, item.xpath('div/a/@href').extract()[0].strip())
             # tutorialItem['lic'] = item.xpath("div[2]/text()").extract()[0].strip()
             # tutorialItem['address'] = item.xpath("div[3]/div/div[1]/span/text()").extract()[0].strip()
             # tutorialItem['developer'] = item.xpath("div[3]/div/div[2]/span/text()").extract()[0].strip()
             # tutorialItem['type'] = item.xpath("div")[-1].xpath('text()').extract()
-            request = Request(url=href, callback=self.parse_detail)
+            href = '{}/{}'.format(NbnewhouseSpider.base_url, item.xpath('div/a/@href').extract()[0].strip())
+            request = Request(url=href, callback=self.parse_data_stats)
             yield request
 
-    def parse_detail(self, response):
+    def parse_data_stats(self, response):
         pattern = re.compile(r'\d+(?:\.\d+)?')
         newHouseItem = NewHouseDjangoItem()
         data_stats = response.xpath("//div[@id='all-data']").xpath('div/div/div/div/div')
@@ -64,3 +64,11 @@ class NbnewhouseSpider(scrapy.Spider):
         # todo
         # other attributes
         yield newHouseItem
+
+    def parse_room_types(self, response):
+        # todo
+        pass
+
+    def parse_building_list(self, response):
+        # todo
+        pass
